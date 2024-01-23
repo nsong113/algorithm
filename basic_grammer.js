@@ -79,3 +79,7 @@ for (let item of mySet) console.log(item);
 //특정 실수에 대하여 toFixed()를 이용해 소수점 아래 둘째 자리까지 출력
 let y = 123.456;
 console.log(y.toFixed(2)); //123.46
+
+//이스케이프 시퀀스 escape sequence
+//예약 문자 혹은 특수 문자를 출력하기 위하여 이스케이프 시퀀스를 사용할 수 있다.
+console.log(`₩₩ 아`);
