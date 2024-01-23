@@ -790,8 +790,146 @@
 
 //제일 작은 수 제거하기
 //정수를 저장한 배열, arr 에서 가장 작은 수를 제거한 배열을 리턴하는 함수, solution을 완성해주세요. 단, 리턴하려는 배열이 빈 배열인 경우엔 배열에 -1을 채워 리턴하세요. 예를들어 arr이 [4,3,2,1]인 경우는 [4,3,2]를 리턴 하고, [10]면 [-1]을 리턴 합니다.
-function solution(arr) {
-  var answer = [];
+// function solution(arr) {
+//   const newArr = [...arr].sort((a, b) => a - b);
+//   if (newArr.length !== 1) {
+//     return arr.filter((a) => newArr[0] !== a);
+//   } else {
+//     return -1;
+//   }
+// }
+// console.log(solution([4, 3, 2, 1]));
+
+//가운데 글자 가져오기ㅣ
+//단어 s의 가운데 글자를 반환하는 함수, solution을 만들어 보세요. 단어의 길이가 짝수라면 가운데 두글자를 반환하면 됩니다.
+// function solution(s) {
+//   if (s.length % 2 === 0) {
+//     return [s[s.length / 2 - 1], s[s.length / 2]].join("");
+//   } else {
+//     return s[Math.floor(s.length / 2)];
+//   }
+// }
+// console.log(solution("abcde"));
+
+//수박수박수박
+//길이가 n이고, "수박수박수박수...."와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 예를들어 n이 4이면 "수박수박"을 리턴하고 3이라면 "수박수"를 리턴하면 됩니다.
+// function solution(n) {
+//   const arr = new Array(10000).fill("수박").join("");
+//   return arr.slice(0, n);
+// }
+// console.log(solution(3));
+
+//내적
+//길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다. a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
+// 이때, a와 b의 내적은 a[0]*b[0] + a[1]*b[1] + ... + a[n-1]*b[n-1] 입니다. (n은 a, b의 길이)
+
+// function solution(a, b) {
+//   let answer = [];
+//   a.forEach((element, i) => {
+//     answer.push(a[i] * b[i]);
+//   });
+//   return answer.reduce((acc, curr) => acc + curr);
+// }
+// console.log(solution([1, 2, 3, 4], [-3, -1, 0, 2]));
+
+//약수의 개수와 덧셈
+//두 정수 left와 right가 매개변수로 주어집니다. left부터 right까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고, 약수의 개수가 홀수인 수는 뺀 수를 return 하도록 solution 함수를 완성해주세요.
+//right에서 left뺀 갯수 i가 n이 될때까지 while로 right에서 차감
+//for문을 돌려서 각각의 아이 추출 -> while문으로 약수 구하기
+// function solution(left, right) {
+//   const num = right - left + 1;
+//   i = 0;
+//   const numArr = []; //[ 16, 15, 14, 13 ]
+//   while (i <= num - 1) {
+//     numArr.push(right - i);
+//     i++;
+//   }
+
+//   let countArr = []; //[ 5, 4, 4, 2 ]
+//   for (let k = 0; k < numArr.length; k++) {
+//     let count = 0;
+//     let j = 0;
+//     while (j <= numArr[k]) {
+//       if (numArr[k] % j === 0) count++;
+//       j++;
+//     }
+//     countArr.push(count);
+//   }
+
+//   countArr.forEach((element, i) => {
+//     if (countArr[i] % 2 !== 0) {
+//       numArr[i] = -1 * numArr[i];
+//     }
+//   });
+//   return numArr.reduce((acc, curr) => acc + curr);
+// }
+// console.log(solution(13, 17));
+
+//문자열 내림차순으로 배치하기
+//문자열 s에 나타나는 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴하는 함수, solution을 완성해주세요.
+// s는 영문 대소문자로만 구성되어 있으며, 대문자는 소문자보다 작은 것으로 간주합니다.
+// function solution(s) {
+//   return s
+//     .split("")
+//     .sort((a, b) => {
+//       if (a > b) return -1;
+//       if (a < b) return 1;
+//       return 0;
+//     })
+//     .join("");
+// }
+// console.log(solution("Zbcdefg"));
+
+//부족한 금액 계산하기
+//this new ride at an amusement park is very popular and runs nonstop. The original fee of this ride is price, but it is determined that when using the ride for the Nth time, the fee will increase as N times of the original fee. That is, if the original fee is 100, it will be 200 for the second time, and 300 for the third time.
+// Write a function solution to return the insufficient money when the ride is used count times.
+// However, return 0 when the owed amount is sufficient.
+// function solution(price, money, count) {
+//   var answer = -1;
+//   const feeArr = [];
+//   i = 1;
+//   while (i <= count) {
+//     feeArr.push(price * i);
+//     i++;
+//   }
+
+//   const total = feeArr.reduce((acc, curr) => acc + curr) - money;
+//   return total > 0 ? total : 0;
+// }
+// console.log(solution(3, 20, 4));
+
+//문자열 다루기 기본
+//
+// 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수, solution을 완성하세요. 예를 들어 s가 "a234"이면 False를 리턴하고 "1234"라면 True를 리턴하면 됩니다.
+// function solution(s) {
+//   let firstCondition = false;
+//   if (s.length === 4 || s.length === 6) {
+//     firstCondition = true;
+//   }
+
+//   let secondCondition = false;
+//   if (s.match(/^[0-9]*$/)) {
+//     secondCondition = true;
+//   }
+//   return firstCondition && secondCondition ? true : false;
+// }
+// console.log(solution("12323"));
+
+//행렬의 뺄샘
+//행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
+function solution(arr1, arr2) {
+  var answer = [[]];
   return answer;
 }
-console.log(solution([4, 3, 2, 1]));
+console.log(
+  solution(
+    [
+      [1, 2],
+      [2, 3],
+    ],
+    [
+      [3, 4],
+      [5, 6],
+    ]
+  )
+);
