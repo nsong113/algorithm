@@ -1044,13 +1044,198 @@
 //이상한 문자 만들기
 //문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나 이상의 공백문자로 구분되어 있습니다. 각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
 
-function solution(s) {
-  var answer = s.split("");
-  answer[0] = answer[0].toUpperCase();
-  // answer.forEach((element, i) => {
-  //   i % 2 === 0 ? (answer[i] = element.toUpperCase()) : "";
-  // });
+// function solution(s) {
+//   let arr = s.split(" ");
+//   console.log(arr);
+//   for (let i = 0; i < arr.length; i++) {
+//     console.log(count);
+//     if (arr[i].length === 0) {
+//       arr.splice(i, 1);
+//     }
+//   }
+//   console.log(arr);
 
-  return answer;
+//   const newArr = [];
+//   arr.forEach((element, i) => {
+//     newArr.push(element);
+//     if (i !== arr.length - 1) {
+//       newArr.push(" ");
+//     }
+//   });
+//   var answer = [...newArr].join("");
+//   answer = answer[0].toUpperCase() + answer.substring(1);
+
+//   let modified = answer.split("").map((element, i) => {
+//     return i % 2 === 0 ? element.toUpperCase() : element;
+//   });
+
+//   return modified.join("");
+// }
+// console.log(solution("try    hello world"));
+
+// function solution(s) {
+//   return s
+//     .split(" ")
+//     .map((word) => {
+//       return word
+//         .split("")
+//         .map((char, index) =>
+//           index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+//         )
+//         .join("");
+//     })
+//     .join(" ");
+// }
+// console.log(solution("try    hello world"));
+
+// function Asolution(s) {
+//   return s
+//     .split(" ")
+//     .map((word) =>
+//       word
+//         .split("")
+//         .map((char, index) =>
+//           index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()
+//         )
+//         .join("")
+//     )
+//     .join(" ");
+// }
+
+// console.log(solution("try    hello world"));
+
+//삼총사
+//한국중학교에 다니는 학생들은 각자 정수 번호를 갖고 있습니다. 이 학교 학생 3명의 정수 번호를 더했을 때 0이 되면 3명의 학생은 삼총사라고 합니다. 예를 들어, 5명의 학생이 있고, 각각의 정수 번호가 순서대로 -2, 3, 0, 2, -5일 때, 첫 번째, 세 번째, 네 번째 학생의 정수 번호를 더하면 0이므로 세 학생은 삼총사입니다. 또한, 두 번째, 네 번째, 다섯 번째 학생의 정수 번호를 더해도 0이므로 세 학생도 삼총사입니다. 따라서 이 경우 한국중학교에서는 두 가지 방법으로 삼총사를 만들 수 있습니다.
+
+// 한국중학교 학생들의 번호를 나타내는 정수 배열 number가 매개변수로 주어질 때, 학생들 중 삼총사를 만들 수 있는 방법의 수를 return 하도록 solution 함수를 완성하세요.
+
+// function solution(number) {
+//   let arr = [];
+
+//   for (let i = 0; i < number.length; i++) {
+//     arr.push(number[i]);
+//     let newNum = number.slice(i + 1);
+//     // console.log("1", newNum);
+
+//     for (let j = 0; j < newNum.length - 1; j++) {
+//       arr.push(newNum[j]);
+//       let newNewNum = newNum.slice(j + 1);
+//       // console.log("2", newNewNum);
+
+//       for (let k = 0; k < newNewNum.length; k++) {
+//         arr.push(newNewNum[k]);
+//         // arr = number;
+//         console.log("arr", arr);
+//       }
+//     }
+//   }
+// }
+// console.log(solution([-2, 3, 0, 2, -5]));
+
+// function solution(number) {
+//   let count = 0;
+
+//   for (let i = 0; i < number.length; i++) {
+//     let newNum = number.slice(i + 1);
+//     for (let k = 0; k < newNum.length; k++) {
+//       let newnewNum = number.slice(k);
+//       for (let j = 0; j < newnewNum.length; j++) {
+//         // if (
+//         //   number[i] !== number[k] &&
+//         //   number[i] !== number[j] &&
+//         //   number[k] !== number[j]
+//         // ) {
+//         if (number[i] + number[k] + number[j] === 0) count++;
+//         console.log(
+//           number[i],
+//           number[k],
+//           number[j],
+//           number[i] + number[k] + number[j]
+//         );
+//         // }
+//       }
+//     }
+//   }
+//   return count;
+// }
+// console.log(solution([-2, 3, 0, 2, -5]));
+
+//크기가 작은 부분
+//숫자로 이루어진 문자열 t와 p가 주어질 때, t에서 p와 길이가 같은 부분문자열 중에서, 이 부분문자열이 나타내는 수가 p가 나타내는 수보다 작거나 같은 것이 나오는 횟수를 return하는 함수 solution을 완성하세요.
+
+// 예를 들어, t="3141592"이고 p="271" 인 경우, t의 길이가 3인 부분 문자열은 314, 141, 415, 159, 592입니다. 이 문자열이 나타내는 수 중 271보다 작거나 같은 수는 141, 159 2개 입니다.
+
+// function solution(t, p) {
+//   const arr = [];
+//   for (let i = 0; i < t.length - p.length + 1; i++) {
+//     k = i;
+//     const num = [];
+//     while (k <= i + p.length - 1) {
+//       num.push(t[k]);
+//       k++;
+//     }
+//     arr.push(parseInt(num.join("")));
+//   }
+//   let count = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] <= parseInt(p)) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+// console.log(solution("3141592", "271"));
+
+//최소직사각형
+// function solution(sizes) {
+//   sizes.map((item) => {
+//     return item.sort((a, b) => b - a);
+//   });
+//   const zero = [];
+//   const first = [];
+//   sizes.forEach((element, i) => {
+//     if (element[0]) zero.push(element[0]);
+//     if (element[1]) first.push(element[1]);
+//   });
+//   return zero.sort((a, b) => b - a)[0] * first.sort((a, b) => b - a)[0];
+// }
+// console.log(
+//   solution([
+//     [60, 50],
+//     [30, 70],
+//     [60, 30],
+//     [80, 40],
+//   ])
+// );
+
+//시저암호
+function solution(s, n) {
+  const upper = [
+    A,
+    B,
+    C,
+    D,
+    E,
+    F,
+    G,
+    H,
+    I,
+    J,
+    K,
+    L,
+    M,
+    N,
+    O,
+    P,
+    Q,
+    R,
+    S,
+    U,
+    V,
+    W,
+    X,
+    Y,
+    Z,
+  ];
 }
-console.log(solution("hi  i am jiu"));
+console.log(solution("AB", 1));
