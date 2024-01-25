@@ -917,19 +917,140 @@
 
 //행렬의 뺄샘
 //행렬의 덧셈은 행과 열의 크기가 같은 두 행렬의 같은 행, 같은 열의 값을 서로 더한 결과가 됩니다. 2개의 행렬 arr1과 arr2를 입력받아, 행렬 덧셈의 결과를 반환하는 함수, solution을 완성해주세요.
-function solution(arr1, arr2) {
-  var answer = [[]];
+// function solution(arr1, arr2) {
+//   const arr1Flat = arr1.flat();
+//   const arr2Flat = arr2.flat();
+//   const newArr = [];
+//   arr1Flat.forEach((element, i) => {
+//     newArr.push(arr1Flat[i] + arr2Flat[i]);
+//   });
+
+//   console.log(newArr);
+//   const chunkSize = newArr.length / arr1.length;
+//   const result = [];
+//   for (let i = 0; i < newArr.length; i += chunkSize) {
+//     result.push(newArr.slice(0 + i, chunkSize + i));
+//   }
+//   return result;
+// }
+// console.log(
+//   solution(
+//     [
+//       [1, 2, 3, 3],
+//       [2, 3, 4, 4],
+//       [1, 2, 3, 4],
+//     ],
+//     [
+//       [3, 4, 5, 3],
+//       [5, 6, 7, 3],
+//       [1, 4, 2, 2],
+//     ]
+//   )
+// );
+
+//직사각형 별찍기
+// function solution(n, m) {
+//   const arr = new Array(n).fill("*").join(",");
+//   const finalArr = [];
+//   for (let i = 0; i < m; i++) {
+//     finalArr.push(arr);
+//   }
+//   return finalArr;
+// }
+// console.log(solution(5, 3));
+
+// process.stdin.setEncoding("utf8");
+// process.stdin.on("data", (data) => {
+//   const n = data.split(" ");
+//   const a = Number(n[0]),
+//     b = Number(n[1]);
+
+//   for (let i = 0; i < b; i++) {
+//     // b = 3 3번 반복
+//     let str = ""; // * 저장할 변수 지정
+//     for (let j = 0; j < a; j++) {
+//       // a = 5, 5번 반복
+//       str = str + "*"; // 5번 출력
+//     }
+//     console.log(str); // 출력
+//   }
+// });
+
+//최대공약수와 최소공배수
+//두 수를 입력받아 두 수의 최대공약수와 최소공배수를 반환하는 함수, solution을 완성해 보세요. 배열의 맨 앞에 최대공약수, 그다음 최소공배수를 넣어 반환하면 됩니다. 예를 들어 두 수 3, 12의 최대공약수는 3, 최소공배수는 12이므로 solution(3, 12)는 [3, 12]를 반환해야 합니다.
+
+// function solution(n, m) {
+//   const greatestCommonDivisor = (n, m) => {
+//     i = 1;
+//     const NmaxArr = [];
+//     while (i <= n) {
+//       if (n % i === 0) {
+//         NmaxArr.push(i);
+//       }
+//       i++;
+//     }
+
+//     j = 1;
+//     const MmaxArr = [];
+//     while (j <= m) {
+//       if (m % j === 0) {
+//         MmaxArr.push(j);
+//       }
+//       j++;
+//     }
+//     const result = MmaxArr.filter((a) => NmaxArr.includes(a));
+//     return result.reverse()[0];
+//   };
+
+//   const minimumCommonDivisor = (n, m) => {
+//     i = 1;
+//     const MminArr = [];
+//     while (i <= 1000000) {
+//       if (i % m === 0) {
+//         MminArr.push(i);
+//       }
+//       i++;
+//     }
+
+//     j = 1;
+//     var Nmin = 0;
+//     while (j <= 1000000) {
+//       if (j % n === 0) {
+//         if (MminArr.includes(j)) var Nmin = j;
+//       }
+//       if (Nmin) break;
+//       j++;
+//     }
+
+//     return Nmin;
+//   };
+
+//   return [greatestCommonDivisor(n, m), minimumCommonDivisor(n, m)];
+// }
+// console.log(solution(3, 12));
+
+//3진법 뒤집기
+//자연수 n이 매개변수로 주어집니다. n을 3진법 상에서 앞뒤로 뒤집은 후, 이를 다시 10진법으로 표현한 수를 return 하도록 solution 함수를 완성해주세요.
+// function solution(n) {
+//   var answer = 0;
+//   const ternary = n.toString(3).split("").reverse().join("");
+//   //parseInt는 문자열 숫자의 진법을 바꿔준다. toString은 숫자를 문자열 진법으로 바꿔준다.
+//   console.log(ternary);
+//   return parseInt(ternary, 3);
+//   //parseint는 문자형 숫자를 10진법으로 바꿔준다. 두번째 칸에는 기존 진법이 들어가야 한다.
+// }
+// console.log(solution(45));
+
+//이상한 문자 만들기
+//문자열 s는 한 개 이상의 단어로 구성되어 있습니다. 각 단어는 하나 이상의 공백문자로 구분되어 있습니다. 각 단어의 짝수번째 알파벳은 대문자로, 홀수번째 알파벳은 소문자로 바꾼 문자열을 리턴하는 함수, solution을 완성하세요.
+
+function solution(s) {
+  var answer = s.split("");
+  answer[0] = answer[0].toUpperCase();
+  // answer.forEach((element, i) => {
+  //   i % 2 === 0 ? (answer[i] = element.toUpperCase()) : "";
+  // });
+
   return answer;
 }
-console.log(
-  solution(
-    [
-      [1, 2],
-      [2, 3],
-    ],
-    [
-      [3, 4],
-      [5, 6],
-    ]
-  )
-);
+console.log(solution("hi  i am jiu"));
