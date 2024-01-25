@@ -1211,31 +1211,74 @@
 //시저암호
 function solution(s, n) {
   const upper = [
-    A,
-    B,
-    C,
-    D,
-    E,
-    F,
-    G,
-    H,
-    I,
-    J,
-    K,
-    L,
-    M,
-    N,
-    O,
-    P,
-    Q,
-    R,
-    S,
-    U,
-    V,
-    W,
-    X,
-    Y,
-    Z,
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
   ];
+
+  let arr = s.split("");
+  let characterArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === " ") {
+      characterArr = [...arr].filter((a) => a !== " ");
+    }
+  }
+
+  const spaceFunc = () => {
+    const newArr = [];
+    arr.forEach((element, i) => {
+      newArr.push(element);
+      if (i !== arr.length - 1) {
+        newArr.push(" ");
+      }
+    });
+
+    console.log(newArr);
+    return newArr;
+  };
+
+  let result = [];
+  characterArr.forEach((element, i) => {
+    let location = upper.indexOf(characterArr[i].toUpperCase());
+
+    var find = "";
+    if (characterArr[i] === characterArr[i].toLowerCase()) {
+      let next = location + n;
+      if (location === 24) next = 0 + n - 1;
+      var find = upper[next].toLowerCase();
+    } else {
+      let next = location + n;
+      if (location === 24) next = 0;
+      var find = upper[next];
+    }
+
+    if (arr[i] === " ") spaceFunc();
+    result.push(find);
+  });
+
+  return result.join("");
 }
-console.log(solution("AB", 1));
+console.log(solution("a B z", 4));
