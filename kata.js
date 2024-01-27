@@ -1209,76 +1209,337 @@
 // );
 
 //시저암호
-function solution(s, n) {
-  const upper = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+// function solution(s, n) {
+//   const upper = [
+//     "A",
+//     "B",
+//     "C",
+//     "D",
+//     "E",
+//     "F",
+//     "G",
+//     "H",
+//     "I",
+//     "J",
+//     "K",
+//     "L",
+//     "M",
+//     "N",
+//     "O",
+//     "P",
+//     "Q",
+//     "R",
+//     "S",
+//     "U",
+//     "V",
+//     "W",
+//     "X",
+//     "Y",
+//     "Z",
+//   ];
 
-  let arr = s.split("");
-  let characterArr = [];
+//   let arr = s.split("");
+//   let characterArr = [];
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === " ") {
-      characterArr = [...arr].filter((a) => a !== " ");
-    }
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === " ") {
+//       characterArr = [...arr].filter((a) => a !== " ");
+//     }
+//   }
 
-  const spaceFunc = () => {
-    const newArr = [];
-    arr.forEach((element, i) => {
-      newArr.push(element);
-      if (i !== arr.length - 1) {
-        newArr.push(" ");
-      }
-    });
+//   const spaceFunc = () => {
+//     const newArr = [];
+//     arr.forEach((element, i) => {
+//       newArr.push(element);
+//       if (i !== arr.length - 1) {
+//         newArr.push(" ");
+//       }
+//     });
 
-    console.log(newArr);
-    return newArr;
-  };
+//     console.log(newArr);
+//     return newArr;
+//     j;
+//   };
 
-  let result = [];
-  characterArr.forEach((element, i) => {
-    let location = upper.indexOf(characterArr[i].toUpperCase());
+//   let result = [];
+//   characterArr.forEach((element, i) => {
+//     let location = upper.indexOf(characterArr[i].toUpperCase());
 
-    var find = "";
-    if (characterArr[i] === characterArr[i].toLowerCase()) {
-      let next = location + n;
-      if (location === 24) next = 0 + n - 1;
-      var find = upper[next].toLowerCase();
-    } else {
-      let next = location + n;
-      if (location === 24) next = 0;
-      var find = upper[next];
-    }
+//     var find = "";
+//     if (characterArr[i] === characterArr[i].toLowerCase()) {
+//       let next = location + n;
+//       if (location === 24) next = 0 + n - 1;
+//       var find = upper[next].toLowerCase();
+//     } else {
+//       let next = location + n;
+//       if (location === 24) next = 0;
+//       var find = upper[next];
+//     }
 
-    if (arr[i] === " ") spaceFunc();
-    result.push(find);
-  });
+//     if (arr[i] === " ") spaceFunc();
+//     result.push(find);
+//   });
 
-  return result.join("");
+//   return result.join("");
+// }
+// console.log(solution("a B z", 4));
+
+//삼총사
+//시저암호
+
+// function solution(s, n) {
+//   var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   var lower = "abcdefghijklmnopqrstuvwxyz";
+//   var answer = "";
+
+//   for (var i = 0; i < s.length; i++) {
+//     var text = s[i];
+//     if (text == " ") {
+//       answer += " ";
+//       continue;
+//     }
+//     var textArr = upper.includes(text) ? upper : lower;
+//     var index = textArr.indexOf(text) + n;
+//     if (index >= textArr.length) index -= textArr.length;
+//     answer += textArr[index];
+//   }
+//   return answer;
+// }
+
+// function solution(s, n) {
+//   var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   var lower = "abcdefghijklmnopqrstuvwxyz";
+//   var answer = "";
+
+//   for (let i = 0; i < s.length; i++) {
+//     var text = s[i];
+//     if (text == " ") {
+//       answer += " ";
+//       continue;
+//     }
+//     var textArr = upper.includes(text) ? upper : lower;
+//     console.log(textArr);
+//     var index = textArr.indexOf(text) + n;
+//     if (index >= textArr.length) index -= textArr.length;
+//     answer += textArr[index];
+//     console.log(index);
+//     console.log(answer);
+//   }
+//   console.log(answer);
+// }
+// console.log(solution("a B z", 4));
+
+//숫자 문자열과 영단어
+// function solution(s) {
+//   var match = {
+//     0: "zero",
+//     1: "one",
+//     2: "two",
+//     3: "three",
+//     4: "four",
+//     5: "five",
+//     6: "six",
+//     7: "seven",
+//     8: "eight",
+//     9: "nine",
+//   };
+//   var number = Object.keys(match);
+//   var name = Object.values(match);
+//   answer = s;
+
+//   for (let i = 0; i < name.length; i++) {
+//     // console.log(s[i]);
+//     var foundArr = answer.split(name[i]);
+//     answer = foundArr.join(i);
+//     console.log(foundArr);
+//   }
+//   console.log(answer);
+// }
+// console.log(solution("one4seveneight"));
+
+// function solution(s) {
+//   // var newS = s;
+//   while (isNaN(+s)) {
+//     s = s.replace("zero", 0);
+//     s = s.replace("one", 1);
+//     s = s.replace("two", 2);
+//     s = s.replace("three", 3);
+//     s = s.replace("four", 4);
+//     s = s.replace("five", 5);
+//     s = s.replace("six", 6);
+//     s = s.replace("seven", 7);
+//     s = s.replace("eight", 8);
+//     s = s.replace("nine", 9);
+//   }
+//   console.log(+s);
+// }
+
+// console.log(solution("one4seveneight"));
+
+// //문자열 내 마음대로 정렬하기
+// function solution(strings, n) {
+//   let arr = [];
+//   //중복 객체 여부 확인
+//   const hasDuplicate = (arr) => {
+//     const newArr = new Set(arr);
+//     return newArr.length !== arr.length; //true ->중복 없음
+//   };
+
+//   //for를 돌면 서 각 단어의 n번째 파악
+//   for (let i = 0; i < strings.length; i++) {
+//     let word = strings[i];
+//     arr.push(word[n - 1]);
+// }
+//   //만약 같은 알파벳이 있다면
+//   //그 안에서 사전순으로 정렬
+
+//   if (hasDuplicate(arr)) arr.sort((a, b) => a.localeCompare(b));
+//   console.log(arr);
+
+//   //각 아이템의 n-1의 인덱스가 arr의 각 인덱스와 같다면 replace
+//   // for (let i = 0; i < strings.length; i++) {
+//   //   for (let k = 0; k < arr.length; k++) {
+//   //     if (strings[i][n - 1] === arr[k]) {
+//   //     }
+//   //   }
+//   // }
+
+// if()
+
+//   console.log(arr);
+//   //만약 같은 알파벳이 없다면
+
+//   //그 n들끼리 오름차순 정렬
+
+//   //대치
+// }
+// console.log(solution(["sbn", "bed", "car"], 1));
+
+//문자열 내 마음대로 정렬하기
+// function solution(strings, n) {
+//   //sort로 사용할 때 a,b자체가 for문을 돌린 것과 같음. (하나하나 순회함))
+//   strings.sort((a, b) =>
+//     a[n] !== b[n] ? a[n].localeCompare(b[n]) : a.localeCompare(b)
+//   );
+
+//   return strings;
+// }
+// console.log(solution(["sun", "bed", "car"], 1));
+
+// strings.sort((a, b) => a[n].localeCompare(b[n]) !== 0 ? a[n].localeCompare(b[n]) : a.localeCompare(b));
+
+//k번째 수
+// function solution(array, commands) {
+//   //for 문으로 commands를 돌려서
+//   //각각의 item을 slice로 자르고
+//   //sort하고
+//   //마지막꺼를 새 배열에 담고
+
+//   var answer = [];
+//   for (let i = 0; i < commands.length; i++) {
+//     var startI = commands[i][0] - 1;
+//     var endsI = commands[i][1];
+//     var pickI = commands[i][2] - 1;
+
+//     var slicedArr = array.slice(startI, endsI).sort((a, b) => a - b);
+//     answer.push(slicedArr[pickI]);
+//   }
+//   return answer;
+// }
+// console.log(
+//   solution(
+//     [1, 5, 2, 6, 3, 7, 4],
+//     [
+//       [2, 5, 3],
+//       [4, 4, 1],
+//       [1, 7, 3],
+//     ]
+//   )
+// );
+
+//두 개 뽑아서 더하기
+// function solution(numbers) {
+//   var result = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     for (let k = i + 1; k < numbers.length; k++) {
+//       var num = numbers[i] + numbers[k];
+//       result.push(num);
+//     }
+//   }
+//   result.sort((a, b) => a - b);
+//   var finalArr = [];
+//   for (let i = 0; i < result.length; i++) {
+//     if (!finalArr.includes(result[i])) {
+//       finalArr.push(result[i]);
+//     }
+//   }
+//   return finalArr;
+// }
+// console.log(solution([5, 0, 2, 7]));
+
+//가장 가까운 같은 글자
+//각각 순회하면서
+//처음나오면 -1
+//한칸 앞에 나왔으면 1
+//두칸 앞에 나왔으면 2 .. n => findLast()
+// function solution(s) {
+//   let arr = [];
+//   let answer = [];
+//   let sArr = s.split("");
+//   for (let i = 0; i < sArr.length; i++) {
+//     if (arr.length !== 0 && !arr.includes(sArr[i])) {
+//       answer.push(-1);
+//     }
+//     if (arr.length !== 0 && arr.includes(sArr[i])) {
+//       let num = arr.lastIndexOf(sArr[i]);
+//       // console.log("num", num);
+
+//       let exactNum = arr.length - num; //-1
+//       // console.log("exactNum", exactNum);
+//       answer.push(exactNum);
+//     }
+//     arr.push(sArr[i]);
+//     if (i === 0) {
+//       answer.push(-1);
+//     }
+//   }
+//   return answer;
+// }
+// console.log(solution("banana"));
+
+//푸드파이터대회
+// function solution(food) {
+//   //각 수가 홀수인지 짝수인지 확인
+//   //만약 i가 홀수라면 -1해서 반나누기
+//   //짝수라면 그냥 반나누기
+//   //반나눠서 담을 때 i를 새로운 배열에 [i]만큼 담기 - 근데 양 옆에서 담아야 함... (앞 unshift, push)
+
+//   var foodTable = [0];
+//   for (let i = food.length; i > 0; i--) {
+//     if (food[i] % 2 === 0) {
+//       let k = 1;
+//       while (k <= food[i] / 2) {
+//         foodTable.unshift(i);
+//         foodTable.push(i);
+//         k++;
+//       }
+//     } else {
+//       let k = 1;
+//       while (k <= Math.floor(food[i] / 2)) {
+//         foodTable.unshift(i);
+//         foodTable.push(i);
+//         k++;
+//       }
+//     }
+//     ///홀수인 경우
+//   }
+//   return foodTable.join("");
+// }
+// console.log(solution([1, 3, 4, 6]));
+
+//콜라문제
+function solution(a, b, n) {
+  var answer = 0;
+  return answer;
 }
-console.log(solution("a B z", 4));
+console.log(solution(2, 1, 20));
