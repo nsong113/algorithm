@@ -1539,7 +1539,20 @@
 
 //콜라문제
 function solution(a, b, n) {
-  var answer = 0;
-  return answer;
+  //while n/2가 1이 될 떄까지
+
+  // 20(n)  2(a)   10(n/2)
+  // 10(n)  2(a)   5(n/2)  => 홀수
+  // 4(n-1)   2(a)   2(n-1  /2)  -1
+  // 2(n)   2(a)   1(n/a)
+  // 2(n+1)   2(a)   1(n+1/2)  +1
+
+  let n;
+  let result = 0;
+  while (n === 1) {
+    result = n / a;
+  }
 }
 console.log(solution(2, 1, 20));
+
+//
