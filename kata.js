@@ -1538,21 +1538,111 @@
 // console.log(solution([1, 3, 4, 6]));
 
 //콜라문제
-function solution(a, b, n) {
-  //while n/2가 1이 될 떄까지
+// function solution(a, b, n) {
+//   //while n/2가 1이 될 떄까지
 
-  // 20(n)  2(a)   10(n/2)
-  // 10(n)  2(a)   5(n/2)  => 홀수
-  // 4(n-1)   2(a)   2(n-1  /2)  -1
-  // 2(n)   2(a)   1(n/a)
-  // 2(n+1)   2(a)   1(n+1/2)  +1
+//   // 20(n)  2(a)   10(n/2)
+//   // 10(n)  2(a)   5(n/2)  => 홀수
+//   // 4(n-1)   2(a)   2(n-1  /2)  -1
+//   // 2(n)   2(a)   1(n/a)
+//   // 2(n+1)   2(a)   1(n+1/2)  +1
 
-  let n;
-  let result = 0;
-  while (n === 1) {
-    result = n / a;
+//   let result = 0;
+//   while (n >= a) {
+//     result += Math.floor(n / a) * b;
+//     n = Math.floor(n / a) * b + (n % a);
+//   }
+//   return result;
+// }
+// console.log(solution(2, 1, 20));
+
+// ////
+
+//명예의 전당
+//제일 처음에 k개를 뽑는다.
+//k개를 제외한 score를 한개한개 돌면서
+//한 번 더 arr를 돌면서 얘들보다 현재 i가 더 작은지 확인,
+//크다면 젤 작은걸 대체
+// function solution(k, score) {
+//   let prizeArr = [];
+//   let answer = [];
+
+//   let a = 0;
+//   while (a < k) {
+//     prizeArr.push(score[a]);
+//     prizeArr.sort((a, b) => a - b);
+//     answer.push(prizeArr[0]);
+//     // console.log(answer);
+//     a++;
+//   }
+//   // console.log(prizeArr);
+
+//   for (let i = k; i < score.length + 1; i++) {
+//     prizeArr.sort((a, b) => a - b);
+
+//     answer.push(prizeArr[0]);
+
+//     console.log("prizeArr", i, prizeArr);
+//     // console.log("answer", answer);
+
+//     for (let j = 0; j < prizeArr.length; j++) {
+//       if (score[i] > prizeArr[j] && !prizeArr.includes(score[i])) {
+//         prizeArr[j] = score[i];
+//         continue;
+//       }
+//     }
+
+//     if (i === score.length) answer.push(prizeArr[0]);
+//   }
+
+//   // console.log(answer);
+//   return answer;
+// }
+// console.log(solution(3, [10, 100, 20, 150, 1, 100, 200]));
+
+// function solution(k, score) {
+//   var prizeArr = [];
+//   var answer = [];
+
+//   for (let i = 0; i < score.length; i++) {
+//     if (i >= k) {
+//       if (prizeArr[0] < score[i]) {
+//         prizeArr.sort((a, b) => a - b);
+//         prizeArr[0] = score[i];
+//       }
+//       if (prizeArr[0] >= score[i]) {
+//         prizeArr.sort((a, b) => a - b);
+//       }
+//     } else {
+//       prizeArr.push(score[i]);
+//     }
+//     answer.push(prizeArr[0]);
+//   }
+//   return answer;
+// }
+// console.log(solution(3, [10, 100, 20, 150, 1, 100, 200]));
+
+//2016
+function solution(a, b) {
+  var dayList = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
+  var monthArr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var daySum;
+
+  if (a < 2) {
+    daySum = b - 1;
+  } else {
+    daySum = monthArr.slice(0, a - 1).reduce((a, b) => a + b) + b - 1;
   }
+  console.log(daySum % 7);
+  return dayList[daySum % 7];
 }
-console.log(solution(2, 1, 20));
 
-//
+console.log(solution(5, 24));
+
+//2016년은 금요일부터 시작한다.
+//n+7 은 금요일이다. //
+//a월이 30,31,29중에 뭔지 안다  => month의 i는 n-1이다.
+//-> month로 끊어서 1로 리셋시킨다.
+//a월이 무슨 요일에 시작하는지 안다. =>일, week를 1:1대응시킨다.
+
+//카드뭉치
