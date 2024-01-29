@@ -1623,21 +1623,21 @@
 // console.log(solution(3, [10, 100, 20, 150, 1, 100, 200]));
 
 //2016
-function solution(a, b) {
-  var dayList = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
-  var monthArr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-  var daySum;
+// function solution(a, b) {
+//   var dayList = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
+//   var monthArr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+//   var daySum;
 
-  if (a < 2) {
-    daySum = b - 1;
-  } else {
-    daySum = monthArr.slice(0, a - 1).reduce((a, b) => a + b) + b - 1;
-  }
-  console.log(daySum % 7);
-  return dayList[daySum % 7];
-}
+//   if (a < 2) {
+//     daySum = b - 1;
+//   } else {
+//     daySum = monthArr.slice(0, a - 1).reduce((a, b) => a + b) + b - 1;
+//   }
+//   console.log(daySum % 7);
+//   return dayList[daySum % 7];
+// }
 
-console.log(solution(5, 24));
+// console.log(solution(5, 24));
 
 //2016년은 금요일부터 시작한다.
 //n+7 은 금요일이다. //
@@ -1646,3 +1646,87 @@ console.log(solution(5, 24));
 //a월이 무슨 요일에 시작하는지 안다. =>일, week를 1:1대응시킨다.
 
 //카드뭉치
+// function solution(cards1, cards2, goal) {
+//   var answer = "No";
+//   var makingSentence = [];
+
+//   if (!goal) return;
+
+//   for (let i = 0; i < goal.length; i++) {
+//     if (cards1[0] === goal[i] || cards2[0] === goal[i]) {
+//       if (cards1[0] === goal[i]) {
+//         makingSentence.push(cards1[0]);
+//         cards1.splice(0, 1);
+//       }
+//       if (cards2[0] === goal[i]) {
+//         makingSentence.push(cards2[0]);
+//         cards2.splice(0, 1);
+//       }
+//     } else {
+//       return (answer = "No");
+//     }
+//   }
+
+//   if (makingSentence.length == goal.length) return (answer = "Yes");
+//   return answer;
+// }
+// console.log(
+//   solution(
+//     ["i", "water", "drink"],
+//     ["want", "to"],
+//     ["i", "want", "to", "drink", "water"]
+//   )
+// );
+
+//방법
+// goal을 for로 돌린다. cards1이나 2에서 찾는다. [0]에서만 찾는다. 있으면 새로운 배열에 넣는다.
+// 모든 것을 통과하면 answer를 true로 바꾼다.
+
+//조건
+//1. 원하는 카드 뭉티에서 카드를 순서대로 한장씩 사용한다.
+//2. 한 번 사용한 카드는 다시 사용할 수 없다.
+//3. 카드를 사용하지 않고 다음 카드로 넘어갈 수 없다.
+//4. 기존에 주어진 카드의 단어 순서는 바꿀 수 없다.
+
+//과일장수
+// function solution(k, m, score) {
+//   var totalPoint = 0;
+//   score.sort((a, b) => b - a);
+
+//   var arr = [];
+//   var smallArr = [];
+
+//   for (let i = 0; i < score.length + m; i++) {
+//     smallArr.push(score[i]);
+//     score.splice(0, 1);
+//     console.log(i);
+//     console.log(score);
+//     if (smallArr.length === m) {
+//       console.log(smallArr);
+//       arr.push([...smallArr]);
+//       smallArr = [];
+//       // continue;
+//       // i += m - 1;
+//     } else if (smallArr.length < m) {
+//       // arr.push([...smallArr]);
+//     } else if (smallArr.length < m && score.length == 1) {
+//       arr.push([...smallArr]);
+//     }
+//   }
+//   // arr.push(smallArr);
+//   // smallArr = [];
+//   console.log(arr);
+// }
+
+//k: 사과의 최대 점수
+// m: 한 상자에 들어가는 사과의 수
+//score : 사과들의 점수
+
+//score를 오름차순으로 만들어서, m개씩 끊어서 배열을 만든다. 그중 가장 작은 마지막 숫자 [m-1]을 추출해서 m과 곱한다.
+function solution(k, m, score) {
+  score.sort((a, b) => b - a);
+
+  var totalArr = [];
+  var arr = [];
+}
+console.log(solution(3, 4, [1, 2, 3, 1, 2, 3, 1]));
